@@ -3,7 +3,7 @@ package ru.stqa.pft.sandbox;
 public class MyFirstProgram {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { /* функция main обращается к функции hello*/
         hello("world");
         hello("Victoria");
         hello("user");
@@ -16,10 +16,11 @@ public class MyFirstProgram {
       System.out.println("Площадь прямоугольника со сторонами " + a + " и " + b + " = " + area(a, b));
     }
 
-    public static void hello(String somebody) {
+    public static void hello(String somebody) {  /*String somebody - параметр функции hello */
         System.out.println("Hello, " + somebody + "!");
     }
-
+  /* void - если функция не возвращает никаких значений */
+  /* double -  если функция возвращает какой-то результат */
     public static double area (double l) {
         return l * l;
     }
