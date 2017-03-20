@@ -4,17 +4,23 @@ package ru.stqa.pft.point;
  * Created by dequa on 17.03.17.
  */
 public class Point {
-  public double x;
-  public double y;
+  int x;
+  int y;
 
-  public Point(double x, double y) {
+  public Point(int x, int y) {
     this.x = x;
     this.y = y;
   }
 
-  public static double distance(Point p1, Point p2) {
-    double dx = p2.x - p1.x;
-    double dy = p2.y - p1.y;
-    return Math.sqrt((dx * dx) + (dy * dy));
+  double distance(int х, int у) {
+    int dx = this.x - х;
+    int dy = this.y - у;
+
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+
+  double distance(Point p) {
+    return distance(p.x, p.y);
   }
 }
