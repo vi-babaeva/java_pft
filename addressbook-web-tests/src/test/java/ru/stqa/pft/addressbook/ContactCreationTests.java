@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
-import ru.stqa.pft.addressbook.ContactData;
 
 public class ContactCreationTests {
     FirefoxDriver wd;
