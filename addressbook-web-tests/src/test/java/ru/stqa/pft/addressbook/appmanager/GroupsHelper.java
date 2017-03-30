@@ -8,7 +8,11 @@ import ru.stqa.pft.addressbook.model.GroupData;
  * Created by dequa on 30.03.17.
  */
 public class GroupsHelper {
-  FirefoxDriver wd;
+  private FirefoxDriver wd;
+
+  public GroupsHelper (FirefoxDriver wd) {
+    this.wd = wd;
+  }
 
   public void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();

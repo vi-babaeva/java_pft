@@ -7,8 +7,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+  FirefoxDriver wd;
 
-  private final ContactHelper contactHelper = new ContactHelper();
+  private SessionHelper sessionHelper;
+  private NavigationHelper navigationHelper;
+  private ContactHelper contactHelper;
+  private GroupsHelper groupsHelper;
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
     try {
@@ -20,35 +24,29 @@ public class ApplicationManager {
   }
 
   public void init() {
-    contactHelper.groupsHelper.wd = new FirefoxDriver();
-    contactHelper.groupsHelper.wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    contactHelper.groupsHelper.wd.get("http://localhost/addressbook/group.php");
-    login("admin", "secret");
-  }
-
-  private void login(String username, String password) {
-    contactHelper.groupsHelper.wd.findElement(By.name("user")).click();
-    contactHelper.groupsHelper.wd.findElement(By.name("user")).clear();
-    contactHelper.groupsHelper.wd.findElement(By.name("user")).sendKeys(username);
-    contactHelper.groupsHelper.wd.findElement(By.name("pass")).click();
-    contactHelper.groupsHelper.wd.findElement(By.name("pass")).clear();
-    contactHelper.groupsHelper.wd.findElement(By.name("pass")).sendKeys(password);
-    contactHelper.groupsHelper.wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-  }
-
-  public void gotoGroupPage() {
-    contactHelper.groupsHelper.wd.findElement(By.linkText("groups")).click();
+    wd = new FirefoxDriver();
+    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.get("http://localhost/addressbook/group.php");
+    contactHelper = new ContactHelper(wd);
+    groupsHelper = new GroupsHelper(wd);
+    navigationHelper = new NavigationHelper(wd);
+    sessionHelper = new SessionHelper(wd);
+    sessionHelper.login("admin", "secret");
   }
 
   public void stop() {
-    contactHelper.groupsHelper.wd.quit();
+    wd.quit();
   }
 
   public GroupsHelper getGroupsHelper() {
-    return contactHelper.groupsHelper;
+    return groupsHelper;
   }
 
   public ContactHelper getContactHelper() {
     return contactHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }
