@@ -38,4 +38,12 @@ public class ContactHelper extends HelperBase {
   public void selectUpdateButton() {
     click(By.name("update"));
   }
+
+  public void selectDeleteButton() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
+
+  public void closeAlert() {
+    wd.switchTo().alert().accept();
+  }
 }
