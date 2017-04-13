@@ -46,8 +46,10 @@ public class ContactHelper extends HelperBase {
     click(By.name("selected[]"));
   }
 
-  public void selectEditButton() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void selectEditButton(int N) {
+    N += 2;
+    String Num = String.valueOf(N);
+    click(By.xpath("//table[@id='maintable']/tbody/tr[" + Num + "]/td[8]/a/img"));
   }
 
   public void selectUpdateButton() {
@@ -55,7 +57,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectDeleteButton() {
-    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
   public void closeAlert() {
