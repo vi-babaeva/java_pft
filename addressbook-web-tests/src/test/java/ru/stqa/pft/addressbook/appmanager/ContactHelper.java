@@ -57,7 +57,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectDeleteButton() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    click(By.xpath(" //div[@id='content']/form[2]/div[2]/input"));
   }
 
   public void closeAlert() {
@@ -93,5 +93,13 @@ public class ContactHelper extends HelperBase {
       contacts.add(contact);
     }
     return contacts;
+  }
+
+  public void findSelect() {
+    isElementPresent(By.name("selected[]"));
+  }
+
+  public void findMaintable() {
+    isElementPresent(By.xpath("//*[@id='maintable']"));
   }
 }
