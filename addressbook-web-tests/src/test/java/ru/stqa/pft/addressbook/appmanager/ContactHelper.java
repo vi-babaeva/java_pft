@@ -66,4 +66,12 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAContact() {
     return  isElementPresent(By.name("selected[]"));
   }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public void findMsg() {
+    isElementPresent(By.cssSelector("div.msgbox"));
+  }
 }
