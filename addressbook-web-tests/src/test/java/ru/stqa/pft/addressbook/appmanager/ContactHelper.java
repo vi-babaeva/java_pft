@@ -4,9 +4,13 @@ import org.apache.bcel.generic.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -37,7 +41,8 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void selectContact() {
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
     click(By.name("selected[]"));
   }
 
@@ -73,5 +78,17 @@ public class ContactHelper extends HelperBase {
 
   public void findMsg() {
     isElementPresent(By.cssSelector("div.msgbox"));
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement element : elements) {
+      String lname = element.findElement(By.cssSelector("td:nth-of-type(2)")).getText();
+      String fname = element.findElement(By.cssSelector("td:nth-of-type(3)")).getText();
+      ContactData contact = new ContactData(fname,lname, null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
   }
 }

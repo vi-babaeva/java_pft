@@ -13,7 +13,7 @@ public class DeleteContactTests extends TestBase {
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Ivan", null, "St.Petersburg", "+78880007733", "test@yandex.ru", "test1"));
     }
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().selectDeleteButton();
     app.getContactHelper().closeAlert();
     app.getContactHelper().findMsg();
