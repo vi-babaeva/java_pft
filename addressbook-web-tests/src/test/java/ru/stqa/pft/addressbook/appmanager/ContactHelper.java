@@ -33,11 +33,19 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void modifyContact(int index, ContactData contact) {
+  public void modify(int index, ContactData contact) {
     selectContact(index);
     selectEditButton(index);
     fillContactForm(contact, false);
     selectUpdateButton();
+  }
+
+  public void delete(int index) {
+    findSelect();
+    selectContact(index);
+    selectDeleteButton();
+    closeAlert();
+    findMsg();
   }
 
   public void returnHomePage() {
@@ -88,7 +96,7 @@ public class ContactHelper extends HelperBase {
     isElementPresent(By.cssSelector("div.msgbox"));
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
