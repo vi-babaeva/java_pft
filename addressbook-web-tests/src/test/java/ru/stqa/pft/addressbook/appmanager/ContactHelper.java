@@ -33,6 +33,13 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
+  public void modifyContact(int index, ContactData contact) {
+    selectContact(index);
+    selectEditButton(index);
+    fillContactForm(contact, false);
+    selectUpdateButton();
+  }
+
   public void returnHomePage() {
       click(By.linkText("home page"));
   }
