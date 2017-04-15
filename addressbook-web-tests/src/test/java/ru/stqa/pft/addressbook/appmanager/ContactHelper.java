@@ -98,11 +98,4 @@ public class ContactHelper extends HelperBase {
     isElementPresent(By.name("selected[]"));
   }
 
-  public void findMaintable() {
-    isElementPresent(By.xpath("//*[@id='maintable']"));
-  }
-
-  public void returnToHomePageAfterDelete() {
-    click(By.linkText("home"));
-  }
 }
