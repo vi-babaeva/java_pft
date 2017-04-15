@@ -33,6 +33,14 @@ public class GroupsHelper extends HelperBase {
     click(By.name("new"));
   }
 
+  public void modifyGroup(int index, GroupData group) {
+    selectGroup(index);
+    initGroupModification();
+    fillGroupForm(group);
+    submitGroupModification();
+    returnToGroupPage();
+  }
+
   public void deleteSelectedGroups() {
     click(By.name("delete"));
   }
