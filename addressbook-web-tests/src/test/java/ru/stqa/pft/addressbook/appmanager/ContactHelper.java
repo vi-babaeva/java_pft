@@ -50,6 +50,14 @@ public class ContactHelper extends HelperBase {
     findMsg();
   }
 
+  public void delete(ContactData contact) {
+    findSelect();
+    selectContactById(contact.getId());
+    selectDeleteButton();
+    closeAlert();
+    findMsg();
+  }
+
   public void returnHomePage() {
       click(By.linkText("home page"));
   }
@@ -60,6 +68,10 @@ public class ContactHelper extends HelperBase {
 
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
+  }
+
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void selectEditButton(int N) {
