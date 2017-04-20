@@ -6,7 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -34,7 +37,6 @@ public class ContactHelper extends HelperBase {
     selectEditButtonById(contact.getId());
     fillContactForm(contact, false);
     selectUpdateButton();
-    contactCache = null;
   }
 
   public void delete(ContactData contact) {
@@ -43,11 +45,10 @@ public class ContactHelper extends HelperBase {
     selectDeleteButton();
     closeAlert();
     findMsg();
-    contactCache = null;
   }
 
   public void returnHomePage() {
-      click(By.linkText("home page"));
+    click(By.linkText("home page"));
   }
 
   public void newContact() {
@@ -78,7 +79,6 @@ public class ContactHelper extends HelperBase {
   public void createContact(ContactData contact) {
     newContact();
     fillContactForm((contact), true);
-    contactCache = null;
     returnHomePage();
   }
 
@@ -86,7 +86,7 @@ public class ContactHelper extends HelperBase {
     return  isElementPresent(By.name("selected[]"));
   }
 
-  public int count() {
+  public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
@@ -94,21 +94,16 @@ public class ContactHelper extends HelperBase {
     isElementPresent(By.cssSelector("div.msgbox"));
   }
 
-  private Contacts contactCache = null;
-
   public Contacts all() {
-    if (contactCache !=null) {
-      return new Contacts(contactCache);
-    }
-    contactCache = new Contacts();
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String lastName = element.findElement(By.cssSelector("td:nth-of-type(2)")).getText();
       String firstName = element.findElement(By.cssSelector("td:nth-of-type(3)")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
     }
-    return new Contacts(contactCache);
+    return contacts;
   }
 
   public void findSelect() {
