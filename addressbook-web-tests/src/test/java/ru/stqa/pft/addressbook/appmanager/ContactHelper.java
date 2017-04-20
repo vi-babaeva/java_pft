@@ -38,6 +38,7 @@ public class ContactHelper extends HelperBase {
     selectEditButtonById(contact.getId());
     fillContactForm(contact, false);
     selectUpdateButton();
+    contactCache = null;
   }
 
   public void delete(ContactData contact) {
@@ -46,6 +47,7 @@ public class ContactHelper extends HelperBase {
     selectDeleteButton();
     closeAlert();
     findMsg();
+    contactCache = null;
   }
 
   public void returnHomePage() {
@@ -84,6 +86,7 @@ public class ContactHelper extends HelperBase {
   public void createContact(ContactData contact) {
     newContact();
     fillContactForm((contact), true);
+    contactCache = null;
     returnHomePage();
   }
 
@@ -99,18 +102,25 @@ public class ContactHelper extends HelperBase {
     isElementPresent(By.cssSelector("div.msgbox"));
   }
 
+  private Contacts contactCache = null;
+
   public Contacts all() {
-    Contacts contacts = new Contacts();
+    if (contactCache !=null) {
+      return new Contacts(contactCache);
+    }
+    contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String lastName = element.findElement(By.cssSelector("td:nth-of-type(2)")).getText();
       String firstName = element.findElement(By.cssSelector("td:nth-of-type(3)")).getText();
       String allPhones = element.findElement(By.cssSelector("td:nth-of-type(6)")).getText();
-      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
-              .withAllPhones(allPhones));
+      String allEmail = element.findElement(By.cssSelector("td:nth-of-type(5)")).getText();
+      String allAddress = element.findElement(By.cssSelector("td:nth-of-type(5)")).getText();
+      contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
+              .withAllPhones(allPhones).withAllEmail(allEmail));
     }
-    return contacts;
+    return new Contacts(contactCache);
   }
 
   public void findSelect() {
@@ -139,6 +149,5 @@ public class ContactHelper extends HelperBase {
     List<WebElement> cells = row.findElements(By.tagName("td"));
     cells.get(7).findElement(By.tagName("a")).click();
   }
-
 
 }
