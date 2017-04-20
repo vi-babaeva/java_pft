@@ -22,7 +22,7 @@ public class ContactModificationTests extends TestBase {
     if (app.сontact().all().size() == 0) {
       app.сontact().createContact(new ContactData()
               .withFirstName("Petr").withLastName("Ivanov")
-              .withPhone("+78880007733").withEmail("test@yandex.ru").withGroup("test1"));
+              .withMobilePhone("78880007733").withEmail("test@yandex.ru").withGroup("test1"));
     }
   }
 
@@ -33,7 +33,7 @@ public class ContactModificationTests extends TestBase {
     ContactData modifitedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifitedContact.getId()).withFirstName("Ivan").withLastName("Petrov")
-            .withAddress("St.Petersburg").withPhone("+78880007733").withAddress("test@yandex.ru");
+            .withAddress("St.Petersburg").withMobilePhone("78880007733").withAddress("test@yandex.ru");
     app.сontact().modify(contact);
     app.goTo().homePage();
     Contacts after = app.сontact().all();
