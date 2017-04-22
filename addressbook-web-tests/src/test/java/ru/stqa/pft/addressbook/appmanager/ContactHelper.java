@@ -83,7 +83,7 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void createContact(ContactData contact) {
+  public void create(ContactData contact) {
     newContact();
     fillContactForm((contact), true);
     contactCache = null;
