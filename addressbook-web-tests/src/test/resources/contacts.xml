@@ -1,0 +1,58 @@
+<list>
+  <contact>
+    <firstName>Ivan 0</firstName>
+    <lastName>Petrov 0</lastName>
+    <address>Saint Petersburg 0</address>
+    <mobile>79645058765 0</mobile>
+    <email>test@yandex.ru 0</email>
+  </contact>
+  <contact>
+    <firstName>Ivan 1</firstName>
+    <lastName>Petrov 1</lastName>
+    <address>Saint Petersburg 1</address>
+    <mobile>79645058765 1</mobile>
+    <email>test@yandex.ru 1</email>
+  </contact>
+  <contact>
+    <firstName>Ivan 2</firstName>
+    <lastName>Petrov 2</lastName>
+    <address>Saint Petersburg 2</address>
+    <mobile>79645058765 2</mobile>
+    <email>test@yandex.ru 2</email>
+  </contact>
+  <contact>
+    <firstName>Ivan 3</firstName>
+    <lastName>Petrov 3</lastName>
+    <address>Saint Petersburg 3</address>
+    <mobile>79645058765 3</mobile>
+    <email>test@yandex.ru 3</email>
+  </contact>
+  <contact>
+    <firstName>Ivan 4</firstName>
+    <lastName>Petrov 4</lastName>
+    <address>Saint Petersburg 4</address>
+    <mobile>79645058765 4</mobile>
+    <email>test@yandex.ru 4</email>
+  </contact>
+  <contact>
+    <firstName>Ivan 5</firstName>
+    <lastName>Petrov 5</lastName>
+    <address>Saint Petersburg 5</address>
+    <mobile>79645058765 5</mobile>
+    <email>test@yandex.ru 5</email>
+  </contact>
+  <contact>
+    <firstName>Ivan 6</firstName>
+    <lastName>Petrov 6</lastName>
+    <address>Saint Petersburg 6</address>
+    <mobile>79645058765 6</mobile>
+    <email>test@yandex.ru 6</email>
+  </contact>
+  <contact>
+    <firstName>Ivan 7</firstName>
+    <lastName>Petrov 7</lastName>
+    <address>Saint Petersburg 7</address>
+    <mobile>79645058765 7</mobile>
+    <email>test@yandex.ru 7</email>
+  </contact>
+</list>
