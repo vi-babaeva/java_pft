@@ -25,12 +25,9 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     attach(By.name("photo"), contactData.getPhoto());
+  }
 
-    if (creation) {
-      new org.openqa.selenium.support.ui.Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    } else  {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
+  public void submitNewContact() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
@@ -87,6 +84,7 @@ public class ContactHelper extends HelperBase {
   public void create(ContactData contact) {
     newContact();
     fillContactForm((contact), true);
+    submitNewContact();
     contactCache = null;
     returnHomePage();
   }
