@@ -23,6 +23,7 @@ public class ContactData {
   private String group;
   private String allPhones;
   private File photo;
+  private String allDetails;
 
 
   public ContactData withId(int id) {
@@ -160,6 +161,11 @@ public class ContactData {
             '}';
   }
 
+  public ContactData withAllDetails(String allDetails) {
+    this.allDetails = allDetails;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -169,7 +175,19 @@ public class ContactData {
 
     if (id != that.id) return false;
     if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+    if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+    if (address != null ? !address.equals(that.address) : that.address != null) return false;
+    if (home != null ? !home.equals(that.home) : that.home != null) return false;
+    if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
+    if (work != null ? !work.equals(that.work) : that.work != null) return false;
+    if (email != null ? !email.equals(that.email) : that.email != null) return false;
+    if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+    if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
+    if (allEmail != null ? !allEmail.equals(that.allEmail) : that.allEmail != null) return false;
+    if (group != null ? !group.equals(that.group) : that.group != null) return false;
+    if (allPhones != null ? !allPhones.equals(that.allPhones) : that.allPhones != null) return false;
+    if (photo != null ? !photo.equals(that.photo) : that.photo != null) return false;
+    return allDetails != null ? allDetails.equals(that.allDetails) : that.allDetails == null;
   }
 
   @Override
@@ -177,7 +195,22 @@ public class ContactData {
     int result = id;
     result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
+    result = 31 * result + (home != null ? home.hashCode() : 0);
+    result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
+    result = 31 * result + (work != null ? work.hashCode() : 0);
+    result = 31 * result + (email != null ? email.hashCode() : 0);
+    result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+    result = 31 * result + (email3 != null ? email3.hashCode() : 0);
+    result = 31 * result + (allEmail != null ? allEmail.hashCode() : 0);
+    result = 31 * result + (group != null ? group.hashCode() : 0);
+    result = 31 * result + (allPhones != null ? allPhones.hashCode() : 0);
+    result = 31 * result + (photo != null ? photo.hashCode() : 0);
+    result = 31 * result + (allDetails != null ? allDetails.hashCode() : 0);
     return result;
   }
 
+  public String getAllDetails() {
+    return allDetails;
+  }
 }
