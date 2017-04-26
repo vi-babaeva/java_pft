@@ -18,17 +18,17 @@ public class ContactCreationTests extends TestBase {
   @DataProvider
   public Iterator<Object[]> validContacts() {
     List<Object[]> list = new ArrayList<Object[]>();
-    list.add(new Object[] {"Petr", "Petrov", "St.Petersburg", "78880007733", "test1@yandex.ru"});
-    list.add(new Object[] {"Ivan", "Ivanov", "Moscow", "79990009999", "test2@yandex.ru"});
-    list.add(new Object[] {"Vasya", "Smirnov", "Moscow", "77770007777", "test3@yandex.ru"});
+    list.add(new Object[] {new ContactData().withFirstName("Petr").withLastName("Petrov")
+            .withAddress("St.Petersburg").withMobilePhone("78880007733").withEmail("test1@yandex.ru")});
+    list.add(new Object[] {new ContactData().withFirstName("Ivan").withLastName("Ivanov")
+            .withAddress("Moscow").withMobilePhone("+79990005544").withEmail("test2@mail.ru")});
+    list.add(new Object[] {new ContactData().withFirstName("Vasya").withLastName("Smirnov")
+            .withAddress("Riga").withMobilePhone("+3908983223").withEmail("test3@gmail.com")});
     return list.iterator();
   }
 
   @Test(dataProvider = "validContacts")
-  public void testContactCreation(String firstname, String lastname, String address, String mobilephone, String email) {
-      ContactData contact = new ContactData().withFirstName(firstname)
-              .withLastName(lastname).withAddress(address)
-              .withMobilePhone(mobilephone).withEmail(email);
+  public void testContactCreation(ContactData contact) {
       Contacts before = app.сontact().all();
       app.сontact().create(contact);
       assertThat(app.сontact().count(), equalTo(before.size() + 1));
