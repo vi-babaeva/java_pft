@@ -2,26 +2,60 @@ package ru.stqa.pft.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
 @XStreamAlias("contact")
-
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
+
+  @Column(name = "firstname")
   private String firstName;
+
+  @Column(name = "lastname")
   private String lastName;
+
+  @Transient
   private String address;
+
+  @Column(name = "home")
+  @Type(type = "text")
   private String home;
+
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobile;
+
+  @Column(name = "work")
+  @Type(type = "text")
   private String work;
+
+  @Transient
   private String email;
+
+  @Transient
   private String email2;
+
+  @Transient
   private String email3;
+
+  @Transient
   private String allEmail;
+
+ @Transient
   private String group;
+
+  @Transient
   private String allPhones;
+
+  @Transient
   private File photo;
 
 
