@@ -115,7 +115,6 @@ public class ContactHelper extends HelperBase {
       String firstName = element.findElement(By.cssSelector("td:nth-of-type(3)")).getText();
       String allPhones = element.findElement(By.cssSelector("td:nth-of-type(6)")).getText();
       String allEmail = element.findElement(By.cssSelector("td:nth-of-type(5)")).getText();
-      String allAddress = element.findElement(By.cssSelector("td:nth-of-type(5)")).getText();
       contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
               .withAllPhones(allPhones).withAllEmail(allEmail));
     }
