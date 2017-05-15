@@ -1,2 +1,2 @@
-# java_pft
-java for QA
+# java_mypft
+studies
