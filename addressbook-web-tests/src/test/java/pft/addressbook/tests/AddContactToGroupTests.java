@@ -31,7 +31,7 @@ public class AddContactToGroupTests extends TestBase {
     contact.withId(contacts.stream().mapToInt(ContactData::getId).max().getAsInt());
   }
 
-  @Test
+  @Test(enabled = false)
   public void testAddContactToGroup() {
     app.contact().addToGroup(groupId, contact.getId(), GROUP);
     assertThat(app.contact().count(), equalTo(1));
