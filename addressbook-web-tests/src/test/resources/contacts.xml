@@ -1,0 +1,16 @@
+<list>
+  <contact>
+    <firstName>Ivan 0</firstName>
+    <lastName>Petrov 0</lastName>
+    <address>Saint Petersburg 0</address>
+    <mobile>79645058765 0</mobile>
+    <email>test@yandex.ru 0</email>
+  </contact>
+  <contact>
+    <firstName>Ivan 1</firstName>
+    <lastName>Petrov 1</lastName>
+    <address>Saint Petersburg 1</address>
+    <mobile>79645058765 1</mobile>
+    <email>test@yandex.ru 1</email>
+  </contact>
+</list>
